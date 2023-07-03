@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center justify-center max-sm:h-128 home max-sm:w-full" :class="{ 'mobile': isMobile }">
+    <div class="flex items-center justify-center max-sm: home max-sm:w-full" :class="{ 'mobile': isMobile }">
         <div class="container max-sm:w-full w-auto shadow-2xl flex flex-col rounded-l-md max-sm:rounded-none sm:flex-row">
             <div class="right flex-none w-full sm:w-2/3 rounded-l-md max-sm:rounded-none">
                 <video class="w-full h-full max-sm:h-44 rounded-l-md max-sm:rounded-none bg-orange-200" autoplay loop muted

@@ -10,10 +10,13 @@ export default {
     },
     extend: {
       colors: {
-        'lightyellow': '#fdf3da'
+        'lightyellow': '#fdf3da',
+        'lightred' :'#ed6ea0'
       },
       spacing: {
-        '128': '=40vh',
+        '128': '50vw',
+        '111': '20vw',
+        
       }
     },
   },
