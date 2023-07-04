@@ -10,7 +10,7 @@
             <div class="left bg-orange-200 flex-none w-full sm:w-1/3 rounded-r-md max-sm:rounded-none pt-20 max-sm:pt-0">
                 <div class="w-full md:mt-0 sm:max-w-md xl:p-0 bg-orange-200">
                     <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                        <p class="text-4xl font-black leading-tight tracking-tight text-gray-900">
+                        <p class="text-3xl font-black leading-tight tracking-tight text-gray-900">
                             MusicPlayer
                         </p>
                         <div>
@@ -161,7 +161,7 @@ label {
 @media (min-width: 768px) {
     .home {
 
-        padding-top: 100px;
+        padding-top: 8vh;
         /* 根据需要进行调整 */
         padding-bottom: 100px;
         /* 根据需要进行调整 */

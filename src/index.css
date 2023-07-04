@@ -19,5 +19,5 @@ html,
 body {
   width: 100%;
   hidden: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 }
