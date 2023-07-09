@@ -6,14 +6,15 @@
         <i class="fa-solid fa-repeat text-xl"></i>
         <i class="fa-solid fa-list text-xl"></i>
       </div>
-      <div class="music-img bg-black w-5/12"></div>
+      <div class="music-img  w-5/12"><img src='https://s.yimg.com/ny/api/res/1.2/MVerAileYIfrd6AbPrEDDA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTU4MDtoPTQzOA--/https://media.zenfs.com/ko_KR/News/starnn/20130701111437_51d0e60dbaf77_1.jpg'></div>
       <div class="music-control w-8/12">
         <div class="container mx-auto">
           <div class="flex flex-col items-center py-4">
             <div class="text-gray-500 text-lg font-medium mb-2">歌名</div>
             <div class="text-gray-900 text-sm font-medium mb-4">作者</div>
-            <div class="w-full bg-black h-1 mt-2">
-              <div class="bg-blue-500 h-full"></div>
+            
+            <div class="pull w-full bg-black h-1 mt-2">
+              <div class="push bg-blue-500 h-full"></div>
               <div class="flex justify-between text-gray-500 text-sm mt-2">
                 <span>0:12</span>
                 <span>3:00</span>
@@ -126,8 +127,8 @@ export default {
         {
           id: 1,
           number: "01",
-          imageURL: "音樂圖片的URL",
-          title: "音樂名稱",
+          imageURL: "https://s.yimg.com/ny/api/res/1.2/MVerAileYIfrd6AbPrEDDA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTU4MDtoPTQzOA--/https://media.zenfs.com/ko_KR/News/starnn/20130701111437_51d0e60dbaf77_1.jpg",
+          title: "牛奶麥片",
           album: "專輯名稱",
           duration: "4:23",
         },
@@ -143,5 +144,17 @@ input,
 label,
 div {
   font-family: CUBIC;
+}
+
+.pash {
+  transition: transform 0.3s ease-in-out;
+}
+
+.pash.left-0 {
+  transform: translateX(-100%);
+}
+
+.pash.right-0 {
+  transform: translateX(100%);
 }
 </style>

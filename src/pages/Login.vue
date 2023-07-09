@@ -39,13 +39,7 @@
                         <input type="submit"
                             class="btn w-full focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                             value="Login">
-                        <div class="overlay" v-if="showOverlay && isMobile">
-                            <div class="overlay-content">
-                                <p>
-                                    將設備轉至豎屏模式 (無法操作)
-                                </p>
-                            </div>
-                        </div>
+                      
                     </div>
                 </div>
             </div>
@@ -60,56 +54,11 @@ import '../index.css';
 export default {
     data() {
         return {
-            showOverlay: false,
-            isMobile: false,
-            currentOrientation: window.orientation,
+         
         };
     },
     mounted() {
-        window.addEventListener('orientationchange', this.handleOrientationChange);
-        this.checkDeviceType();
-        this.checkOrientation();
-    },
-    beforeDestroy() {
-        window.removeEventListener('orientationchange', this.handleOrientationChange);
-        this.enableScroll();
-    },
-    methods: {
-        checkDeviceType() {
-            this.isMobile = window.innerWidth <= 767;
-        },
-        checkOrientation() {
-            const orientation = window.orientation;
-            if (orientation === 0 || orientation === 180) {
-                this.showOverlay = false;
-                this.enableScroll();
-            } else {
-                this.showOverlay = this.isMobile;
-                this.disableScroll();
-            }
-            this.currentOrientation = orientation;
-        },
-        handleOrientationChange() {
-            const newOrientation = window.orientation;
-            if (newOrientation !== this.currentOrientation) {
-                this.checkOrientation();
-            }
-        },
-        disableScroll() {
-            document.body.style.overflow = 'hidden';
-            document.addEventListener('touchmove', this.preventScroll, { passive: false });
-        },
-        enableScroll() {
-            document.body.style.overflow = 'auto';
-            document.removeEventListener('touchmove', this.preventScroll, { passive: false });
-        },
-        preventScroll(event) {
-            event.preventDefault();
-        },
-        checkDeviceType() {
-            this.isMobile = window.innerWidth <= 767;
-            this.checkOrientation();
-        },
+     
     },
 };
 </script>
