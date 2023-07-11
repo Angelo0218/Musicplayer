@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center justify-center max-sm: home max-sm:w-full" :class="{ 'mobile': isMobile }">
+    <div class="flex items-center justify-center w-123 h-full max-sm: home max-sm:w-full" :class="{ 'mobile': isMobile }">
         <div class="container max-sm:w-full w-auto shadow-2xl flex flex-col rounded-l-md max-sm:rounded-none sm:flex-row">
             <div class="right flex-none w-full sm:w-2/3 rounded-l-md max-sm:rounded-none">
                 <video class="w-full h-full max-sm:h-44 rounded-l-md max-sm:rounded-none bg-orange-200" autoplay loop muted
@@ -7,7 +7,7 @@
                     <source src="../assets/video/movie1.mp4" type="video/mp4">
                 </video>
             </div>
-            <div class="left bg-orange-200 flex-none w-full sm:w-1/3 rounded-r-md max-sm:rounded-none pt-20 max-sm:pt-0">
+            <div class="left bg-orange-200 flex-none sm:w-1/3 rounded-r-md max-sm:rounded-none pt-20 max-sm:pt-0">
                 <div class="w-full md:mt-0 sm:max-w-md xl:p-0 bg-orange-200">
                     <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <p class="text-3xl font-black leading-tight tracking-tight text-gray-900">
@@ -64,8 +64,13 @@ export default {
 </script>
 
   
-<style scoped>
-
+<style >
+body{
+    overflow:hidden
+}
+.home{
+    margin:0 auto ;
+}
 
 video {
     object-fit: cover;
@@ -87,7 +92,7 @@ label {
     font-family: CUBIC;
 }
 
-.overlay {
+/* .overlay {
     position: fixed;
     top: -25px;
     left: 0;
@@ -98,14 +103,14 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
-.overlay-content {
+/* .overlay-content {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     text-align: center;
-}
+} */
 
 @media (min-width: 768px) {
     .home {
