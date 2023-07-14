@@ -17,7 +17,10 @@
               <div class="text-gray-900 text-sm font-medium mb-4">{{ currentSong.artist }}</div>
 
               <!-- 拉動條 -->
-              <div class="pull w-full bg-black h-1 mt-2 relative" ref="progress" @mousedown="handleSliderClick">
+              <!-- 拉動條 -->
+              <div class="pull w-full bg-black h-1 mt-2 relative" ref="progress" @mousedown="handleSliderClick"
+                @mousemove="handleDrag" @mouseup="endDrag" @touchstart="handleSliderClick" @touchmove="handleDrag"
+                @touchend="endDrag">
                 <div class="push bg-blue-500 h-full" :style="{ width: progressBarWidth + '%' }"></div>
                 <div class="slider-handle" :style="{ left: progressBarWidth + '%' }" @mousedown="startDrag"
                   @touchstart="startDrag"></div>
@@ -27,6 +30,7 @@
                   <span>{{ formatTime(duration) }}</span>
                 </div>
               </div>
+
               <div class="flex justify-center items-center mt-4 ml-2 pt-1">
                 <!-- 上一首 -->
                 <span class="bg-transparent rounded-full px-2 py-1 mr-2" @click="playPreviousSong">
@@ -92,49 +96,22 @@ export default {
       musicList: [
         {
           imageURL: "../src/assets/la.jpg",
+          title: "打鬼隊",
+          number: "",
+          album: "",
+          artist: "廖偉盛 郭丞恩",
+          duration: "",
+          url: "../src/assets/music/打鬼隊.mp3"
+        },
+        {
+          imageURL: "../src/assets/la.jpg",
           title: "戶裡頭",
           number: "",
           album: "",
-          artist: "廖偉盛",
+          artist: "廖偉盛 郭丞恩",
           duration: "",
           url: "../src/assets/music/戶裡頭.mp3"
 
-        },
-        {
-          imageURL: "../src/assets/la.jpg",
-          title: "牛奶麥片",
-          number: "",
-          album: "",
-          artist: "廖偉盛",
-          duration: "",
-          url: "../src/assets/music/牛奶麥片.mp3"
-        },
-        {
-          imageURL: "../src/assets/la.jpg",
-          title: "龍岡魂",
-          number: "",
-          album: "",
-          artist: "廖偉盛",
-          duration: "",
-          url: "../src/assets/music/龍岡魂.mp3"
-        },
-        {
-          imageURL: "../src/assets/la.jpg",
-          title: "我們先放輕鬆",
-          number: "",
-          album: "",
-          artist: "廖偉盛",
-          duration: "",
-          url: "../src/assets/music/我們先放輕鬆.mp3"
-        },
-        {
-          imageURL: "../src/assets/la.jpg",
-          title: "特寫你",
-          number: "",
-          album: "",
-          artist: "廖偉盛",
-          duration: "",
-          url: "../src/assets/music/特寫你.mp3"
         },
         {
           imageURL: "../src/assets/la.jpg",
@@ -147,13 +124,44 @@ export default {
         },
         {
           imageURL: "../src/assets/la.jpg",
-          title: "打鬼隊",
+          title: "牛奶麥片",
           number: "",
           album: "",
           artist: "廖偉盛",
           duration: "",
-          url: "../src/assets/music/打鬼隊.mp3"
+          url: "../src/assets/music/牛奶麥片.mp3"
         },
+
+        {
+          imageURL: "../src/assets/la.jpg",
+          title: "龍岡魂",
+          number: "",
+          album: "",
+          artist: "廖偉盛",
+          duration: "",
+          url: "../src/assets/music/龍岡魂.mp3"
+        },
+        {
+          imageURL: "../src/assets/la.jpg",
+          title: "特寫你",
+          number: "",
+          album: "",
+          artist: "廖偉盛 郭丞恩",
+          duration: "",
+          url: "../src/assets/music/特寫你.mp3"
+        },
+        {
+          imageURL: "../src/assets/la.jpg",
+          title: "我們先放輕鬆",
+          number: "",
+          album: "",
+          artist: "廖偉盛 郭丞恩",
+          duration: "",
+          url: "../src/assets/music/我們先放輕鬆.mp3"
+        },
+
+
+
       ],
       nextNumber: 1,
       startX: 0,
@@ -258,18 +266,23 @@ export default {
     handleDrag(event) {
       if (this.isDragging) {
         event.preventDefault();
-        const currentX = event.clientX || event.touches[0].clientX;
         const progressContainerWidth = this.$refs.progress.offsetWidth;
-        const progressBarWidth = Math.max(0, Math.min((currentX - this.startX) / progressContainerWidth * 100, 100));
+        const currentX = event.clientX || event.touches[0].clientX;
+        const offsetX = currentX - this.startX;
+        const progressBarWidth = Math.max(0, Math.min(this.progressBarWidth + offsetX / progressContainerWidth * 100, 100));
         this.progressBarWidth = progressBarWidth;
         const seekTime = (progressBarWidth / 100) * this.duration;
         this.audioPlayer.currentTime = seekTime;
+        this.startX = currentX;
       }
     },
+
+
     endDrag() {
       this.isDragging = false;
     },
     handleSliderClick(event) {
+      event.preventDefault();
       const progressContainerWidth = this.$refs.progress.offsetWidth;
       const clickX = event.clientX - this.$refs.progress.getBoundingClientRect().left;
       const progressBarWidth = Math.max(0, Math.min((clickX / progressContainerWidth) * 100, 100));
